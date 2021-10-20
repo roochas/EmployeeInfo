@@ -1,0 +1,69 @@
+{
+  "posts": [
+    {
+      "id": 2,
+      "firstname": "Darpan",
+      "lastname": "Kulkarni",
+      "email": "dsk@gmail.com",
+      "mobile": "1323456543",
+      "salary": "90000"
+    },
+    {
+      "id": 3,
+      "firstname": "Rucha",
+      "lastname": "Kulkarni",
+      "email": "roochas1.kulkarni@gmail.com",
+      "mobile": "9637060032",
+      "salary": "50000"
+    },
+    {
+      "id": 4,
+      "firstname": "Swati",
+      "lastname": "Kulkarni",
+      "email": "ssk@gmail.com",
+      "mobile": "3245657890",
+      "salary": "80000"
+    },
+    {
+      "id": 5,
+      "firstname": "Sudhir",
+      "lastname": "Kulkarni",
+      "email": "snk@gmail.com",
+      "mobile": "9834862116",
+      "salary": "70000"
+    }
+  ],
+  "signupUsers": [
+    {
+      "fullname": "roochas.kulkarni@gmail.com",
+      "email": "roochas.kulkarni@gmail.com",
+      "password": "12345",
+      "mobile": 9637060032,
+      "id": 1
+    },
+    {
+      "fullname": "Darpan Kulkarni",
+      "email": "dsk@gmail.com",
+      "password": "123",
+      "mobile": 1234567890,
+      "id": 2
+    },
+    {
+      "fullname": "John",
+      "email": "john@gmail.com",
+      "password": "12345678",
+      "mobile": 1234567890,
+      "id": 3
+    },
+    {
+      "fullname": "Sudhir Kulkarni",
+      "email": "snk@gmail.com",
+      "password": "123456",
+      "mobile": 1234325678,
+      "id": 4
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}
