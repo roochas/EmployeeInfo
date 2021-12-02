@@ -1,8 +1,17 @@
+// export class EmployeeModel {
+//     id: number = 0;
+//     firstname : string = '';
+//     lastname: string = '';
+//     email: string = '';
+//     mobile: string = '';
+//     salary: string = '';
+// }
+
+
 export class EmployeeModel {
-    id: number = 0;
-    firstname : string = '';
-    lastname: string = '';
-    email: string = '';
-    mobile: string = '';
-    salary: string = '';
+    employeeId !: number;
+    firstName !: string;
+    lastName !: string;
+    dateOfBirth !: string;
+    designarion !: string;
 }

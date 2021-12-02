@@ -3,7 +3,7 @@
         <h1 style="color:white">Employee List</h1>
         <div class="d-flex">
             <button type="button" (click)="clickAddEmployee()" data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-success" >Add Employee</button>
-            <button routerLink="/login" class="btn btn-danger mx-2">Logout</button>
+            <button routerLink="/login" (click)="clickLogout()" class="btn btn-danger mx-2">Logout</button>
         </div>
     </div>
 </nav>
@@ -13,19 +13,18 @@
         <th scope="col">Employee Id</th>
         <th scope="col">First Name</th>
         <th scope="col">Last Name</th>
-        <th scope="col">Email Id</th>
-        <th scope="col">Mobile No.</th>
-        <th scope="col">Salary</th>
+        <th scope="col">Date of Birth</th>
+        <th scope="col">Designation</th>
+        <!-- <th scope="col">Salary</th> -->
         <th scope="col">Action</th>
     </thead>
     <tbody>
         <tr *ngFor="let row of employeeData">
-            <td>{{ row.id }}</td>
-            <td>{{ row.firstname }}</td>
-            <td>{{ row.lastname }}</td>
-            <td>{{ row.email }}</td>
-            <td>{{ row.mobile }}</td>
-            <td>{{ row.salary }}</td>
+            <td>{{ row.employeeId }}</td>
+            <td>{{ row.firstName }}</td>
+            <td>{{ row.lastName }}</td>
+            <td>{{ row.dateOfBirth | date }}</td>
+            <td>{{ row.designarion }}</td>
             <td>
                 <button type="button" (click)="onEdit(row)" data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-info">Edit</button>
                 <button (click)="deleteEmployee(row)" class="btn btn-danger mx-3">Delete</button>
@@ -54,16 +53,12 @@
             <input type="text" formControlName="lastName" class="form-control" id="exampleInputlastName">
           </div>
           <div class="mb-3">
-            <label for="exampleInputEmail" class="form-label">Email ID</label>
-            <input type="email" formControlName="email" class="form-control" id="exampleInputEmail">
+            <label for="exampleInputEmail" class="form-label">Date of Birth</label>
+            <input type="date" formControlName="dateOfBirth" class="form-control" id="exampleInputEmail">
           </div>
           <div class="mb-3">
-            <label for="exampleInputMobile" class="form-label">Mobile Number</label>
-            <input type="text" formControlName="mobile" class="form-control" id="exampleInputMobile">
-          </div>
-          <div class="mb-3">
-            <label for="exampleInputSalary" class="form-label">Salary</label>
-            <input type="text" formControlName="salary" class="form-control" id="exampleInputSalary">
+            <label for="exampleInputMobile" class="form-label">Designation</label>
+            <input type="text" formControlName="designation" class="form-control" id="exampleInputMobile">
           </div>
           
         </form>
@@ -71,7 +66,7 @@
       <div class="modal-footer">
         <button type="button" id="cancel" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
         <button type="button" *ngIf="showAdd" class="btn btn-primary" (click)="postEmployeeDetails()">Add</button>
-        <button type="button" *ngIf="showUpdate" class="btn btn-primary" (click)="updateEmployeeDetails()">Update</button>
+        <button type="button" *ngIf="showUpdate" class="btn btn-primary" (click)="updateEmployeeDetails()">Update</button> 
       </div>
     </div>
   </div>

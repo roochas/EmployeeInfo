@@ -31,6 +31,7 @@ export class LoginComponent implements OnInit {
       if(user)
       {
         alert("Login Success");
+        localStorage.setItem('token',"xxyyzz");
         this.loginForm.reset();
         this.router.navigate(["list-form"]);
       }

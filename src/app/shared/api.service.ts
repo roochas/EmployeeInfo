@@ -7,35 +7,76 @@ import {map} from 'rxjs/operators'
 })
 export class ApiService {
 
+  public employeeAPIUrl : string = "http://34.133.68.99/api/Employee/";
   constructor(private http: HttpClient) { }
 
   postEmployee(data: any) {
-    return this.http.post<any>("http://localhost:3000/posts",data)
+    return this.http.post<any>(`${this.employeeAPIUrl}CreateEmployee`,data)
     .pipe(map((res:any) => {
       return res;
     }))
   }
 
+  
   getEmployee(){
-    return this.http.get<any>("http://localhost:3000/posts")
+    return this.http.get<any>(`${this.employeeAPIUrl}GetAllEmployees`)
     .pipe(map((res:any) => {
       return res;
     }))
   }
 
-  updateEmployee(data : any, id: number)
+  updateEmployee(data : any)
   {
-    return this.http.put<any>("http://localhost:3000/posts/"+id,data)
+    return this.http.patch<any>(`${this.employeeAPIUrl}UpdateEmployeeInfo`,data)
     .pipe(map((res:any) => {
       return res;
     }))
   }
 
-  deleteEmployee(id: number){
-    return this.http.delete<any>("http://localhost:3000/posts/"+id)
+  deleteEmployee(id: any){
+    return this.http.delete<any>(`${this.employeeAPIUrl}RemoveEmployee?EmpId=${id}`)
     .pipe(map((res: any) => {
        return res; 
     }))
   }
-
 }
+
+
+
+/*
+      For local JSON API
+
+        //post Employee
+         postEmployee(data: any) {
+          return this.http.post<any>("http://localhost:3000/posts",data)
+          .pipe(map((res:any) => {
+            return res;
+          }))
+        }
+
+        //get employee
+        getEmployee(){
+          return this.http.get<any>("http://localhost:3000/posts")
+          .pipe(map((res:any) => {
+            return res;
+          }))
+        }
+
+        //update employee
+        updateEmployee(data : any, id: number)
+        {
+          return this.http.put<any>("http://localhost:3000/posts/"+id,data)
+          .pipe(map((res:any) => {
+            return res;
+          }))
+        }        
+
+        //delete employee
+        deleteEmployee(id: number){
+          return this.http.delete<any>("http://localhost:3000/posts/"+id)
+          .pipe(map((res: any) => {
+            return res; 
+          }))
+        }
+
+*/
