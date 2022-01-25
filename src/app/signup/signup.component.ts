@@ -2,6 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder,FormGroup,Validators} from '@angular/forms';
 import { Router } from '@angular/router';
+import { ApiService } from '../shared/api.service';
+import { UserModel } from '../shared/model/user.model';
 
 @Component({
   selector: 'app-signup',
@@ -11,26 +13,33 @@ import { Router } from '@angular/router';
 export class SignupComponent implements OnInit {
 
   public signupForm !: FormGroup;
-  constructor(private formBuilder : FormBuilder, private http: HttpClient, private router: Router) { }
+  public signupObj = new UserModel();
+  constructor(private formBuilder : FormBuilder, private http: HttpClient, private router: Router, private api: ApiService) { }
 
   ngOnInit(): void {
     this.signupForm = this.formBuilder.group({
-      fullname: ['',Validators.required],
-      email: ['',Validators.required],
-      password: ['',Validators.required],
-      mobile: ['',Validators.required]
+      fullname:["", Validators.required],
+      mobile:["",Validators.required],
+      username:["",Validators.compose([Validators.required,Validators.email])],
+      password:["",Validators.required]
     })
   }
 
-  signUp(){
-    this.http.post<any>("http://localhost:3000/signupUsers",this.signupForm.value)
+  signUp()
+  {
+    console.log(this.signupForm.value.password);
+    this.signupObj.FullName = this.signupForm.value.fullname; 
+    this.signupObj.Mobile = this.signupForm.value.mobile; 
+    this.signupObj.UserName = this.signupForm.value.username; 
+    this.signupObj.Password = this.signupForm.value.password; 
+
+    console.log(this.signupObj);
+    this.api.signUp(this.signupObj)
     .subscribe(res => {
-      alert("Signup successfull");
+      alert("Signed up successfull");
       this.signupForm.reset();
       this.router.navigate(["login"]);
-    }, err=> {
-      alert("Something went wrong");
-    })
+    });
   }
 
 }

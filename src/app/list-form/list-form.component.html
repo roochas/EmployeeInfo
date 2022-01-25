@@ -15,7 +15,6 @@
         <th scope="col">Last Name</th>
         <th scope="col">Date of Birth</th>
         <th scope="col">Designation</th>
-        <!-- <th scope="col">Salary</th> -->
         <th scope="col">Action</th>
     </thead>
     <tbody>
@@ -24,7 +23,7 @@
             <td>{{ row.firstName }}</td>
             <td>{{ row.lastName }}</td>
             <td>{{ row.dateOfBirth | date }}</td>
-            <td>{{ row.designarion }}</td>
+            <td>{{ row.designation }}</td>
             <td>
                 <button type="button" (click)="onEdit(row)" data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-info">Edit</button>
                 <button (click)="deleteEmployee(row)" class="btn btn-danger mx-3">Delete</button>

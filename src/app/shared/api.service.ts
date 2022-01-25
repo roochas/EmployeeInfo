@@ -7,7 +7,8 @@ import {map} from 'rxjs/operators'
 })
 export class ApiService {
 
-  public employeeAPIUrl : string = "http://34.133.68.99/api/Employee/";
+  public employeeAPIUrl : string = "https://localhost:44315/api/Employee/";
+  public loginAPIUrl : string = "https://localhost:44315/api/Login/";
   constructor(private http: HttpClient) { }
 
   postEmployee(data: any) {
@@ -27,17 +28,29 @@ export class ApiService {
 
   updateEmployee(data : any)
   {
-    return this.http.patch<any>(`${this.employeeAPIUrl}UpdateEmployeeInfo`,data)
+    return this.http.put<any>(`${this.employeeAPIUrl}UpdateEmployeeInfo`,data)
     .pipe(map((res:any) => {
+      console.log(res);
       return res;
     }))
   }
 
-  deleteEmployee(id: any){
-    return this.http.delete<any>(`${this.employeeAPIUrl}RemoveEmployee?EmpId=${id}`)
+  deleteEmployee(EmpId: any){
+    return this.http.delete<any>(`${this.employeeAPIUrl}RemoveEmployee/${EmpId}`)
     .pipe(map((res: any) => {
        return res; 
     }))
+  }
+
+  signUp(empObj : any)
+  {
+    return this.http.post<any>(`${this.loginAPIUrl}SignUp`,empObj);
+  }
+
+  login(empObj: any)
+  {
+    console.log(empObj);
+    return this.http.post<any>(`${this.loginAPIUrl}login`,empObj);
   }
 }
 

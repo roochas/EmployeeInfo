@@ -13,5 +13,5 @@ export class EmployeeModel {
     firstName !: string;
     lastName !: string;
     dateOfBirth !: string;
-    designarion !: string;
+    designation !: string;
 }

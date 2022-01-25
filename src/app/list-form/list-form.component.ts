@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder,FormGroup } from '@angular/forms';
 import { ApiService } from '../shared/api.service';
-import { EmployeeModel } from './employee-dash board.model';
+import { EmployeeModel } from '../shared/model/employee-dash board.model';
 import {formatDate} from '@angular/common';
 
 @Component({
@@ -44,7 +44,7 @@ export class ListFormComponent implements OnInit {
     this.employeeModelObj.firstName = this.formValue.value.firstName;
     this.employeeModelObj.lastName = this.formValue.value.lastName;
     this.employeeModelObj.dateOfBirth = this.formValue.value.dateOfBirth;
-    this.employeeModelObj.designarion = this.formValue.value.designation;
+    this.employeeModelObj.designation = this.formValue.value.designation;
 
     this.api.postEmployee(this.employeeModelObj)
     .subscribe(res=> {
@@ -64,7 +64,8 @@ export class ListFormComponent implements OnInit {
   getAllEmployee(){
     this.api.getEmployee()
     .subscribe(res => {
-      this.employeeData = res;
+      this.employeeData = res.employeeDetails;
+      console.log(this.employeeData);
     })
   }
 
@@ -83,7 +84,7 @@ export class ListFormComponent implements OnInit {
     this.formValue.controls['firstName'].setValue(row.firstName);
     this.formValue.controls['lastName'].setValue(row.lastName);
     this.formValue.controls['dateOfBirth'].setValue(formatDate(row.dateOfBirth,'yyyy-MM-dd', 'en'));
-    this.formValue.controls['designation'].setValue(row.designarion);
+    this.formValue.controls['designation'].setValue(row.designation);
 
     this.showAdd = false;
     this.showUpdate = true;
@@ -95,7 +96,7 @@ export class ListFormComponent implements OnInit {
     this.employeeModelObj.firstName = this.formValue.value.firstName;
     this.employeeModelObj.lastName = this.formValue.value.lastName;
     this.employeeModelObj.dateOfBirth = this.formValue.value.dateOfBirth;
-    this.employeeModelObj.designarion = this.formValue.value.designation;
+    this.employeeModelObj.designation = this.formValue.value.designation;
 
     this.api.updateEmployee(this.employeeModelObj)
     .subscribe(res=>{
